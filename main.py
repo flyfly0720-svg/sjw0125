@@ -1,3 +1,3 @@
-import steamlit as st
+import streamlit as st
 st.title("서재원의 첫 웹 앱")
 st.write("안녕하세요 반가워요")
