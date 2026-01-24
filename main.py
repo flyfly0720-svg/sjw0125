@@ -127,3 +127,6 @@ st.info(
 
 st.success("✅ 생명과학 · 의학 · 사회 융합 탐구 웹 앱으로 활용 가능!")
 
+streamlit run main.py
+
+
