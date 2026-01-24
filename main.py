@@ -1,3 +1,129 @@
 import streamlit as st
-st.title("서재원의 첫 웹 앱")
-st.write("안녕하세요 반가워요")
+import matplotlib.pyplot as plt
+
+# =========================
+# 페이지 설정
+# =========================
+st.set_page_config(
+    page_title="🦋 비만치료제의 나비효과",
+    layout="wide"
+)
+
+# =========================
+# 제목 영역
+# =========================
+st.title("🦋 비만치료제의 나비효과")
+st.write("💊 **위고비 · 삭센다 · 마운자로 · 오젬픽이 만들어내는 사회적 연쇄 효과**")
+st.write("➡️ 체중 감소라는 작은 변화가 의료 · 산업 · 사회 구조까지 흔드는 과정을 살펴본다")
+
+# =========================
+# 약물 선택
+# =========================
+drug = st.selectbox(
+    "💉 비만치료제를 선택하세요",
+    ["위고비 (Wegovy)", "삭센다 (Saxenda)", "마운자로 (Mounjaro)", "오젬픽 (Ozempic)"]
+)
+
+drug_info = {
+    "위고비 (Wegovy)": "🟢 주 1회 | 강력한 체중 감소 | 비만 치료 특화",
+    "삭센다 (Saxenda)": "🟡 매일 투여 | 초기 GLP-1 비만치료제",
+    "마운자로 (Mounjaro)": "🔵 GLP-1 + GIP | 최대 체중 감소 효과",
+    "오젬픽 (Ozempic)": "🟣 당뇨 치료제 → 비만 치료 확장"
+}
+
+st.success("📌 선택 약물 특징: " + drug_info[drug])
+
+# =========================
+# 나비효과 구조
+# =========================
+st.subheader("🔄 비만치료제의 나비효과 구조")
+
+c1, c2, c3, c4 = st.columns(4)
+
+with c1:
+    st.markdown("### 👤 개인")
+    st.write("🍽️ 식욕 감소")
+    st.write("⚖️ 체중 감소")
+    st.write("🧬 대사 개선")
+    st.write("😄 삶의 질 증가")
+
+with c2:
+    st.markdown("### 🏥 의료")
+    st.write("❤️ 심혈관 질환 감소")
+    st.write("🩺 당뇨·고혈압 개선")
+    st.write("💸 의료비 절감")
+    st.write("🛡️ 예방의학 강화")
+
+with c3:
+    st.markdown("### 🏭 산업")
+    st.write("🥗 식품 산업 변화")
+    st.write("💊 제약·바이오 성장")
+    st.write("🏋️ 헬스장 이용 감소")
+    st.write("📉 비만 관련 치료 축소")
+
+with c4:
+    st.markdown("### 🌍 사회")
+    st.write("👀 비만 인식 변화")
+    st.write("⚙️ 노동 생산성 증가")
+    st.write("📉 사회적 비용 감소")
+    st.write("📊 공중보건 구조 변화")
+
+# =========================
+# 데이터 (가상 시뮬레이션)
+# =========================
+st.subheader("📊 비만치료제 도입 후 변화 데이터 (가상 예측)")
+
+years = ["도입 전", "1년 후", "3년 후", "5년 후"]
+
+medical_cost = [100, 92, 80, 70]          # 의료비 지수
+gym_membership = [100, 90, 78, 65]         # 헬스장 회원 수 지수
+cardio_disease = [100, 88, 72, 60]         # 심혈관 질환 발생 지수
+
+colA, colB, colC = st.columns(3)
+
+# =========================
+# 의료비 절감
+# =========================
+with colA:
+    st.markdown("### 💸 의료비 절감 효과")
+    fig1, ax1 = plt.subplots()
+    ax1.plot(years, medical_cost, marker="o")
+    ax1.set_ylabel("의료비 지수")
+    ax1.set_title("🏥 의료비 변화")
+    st.pyplot(fig1)
+
+# =========================
+# 헬스장 회원 감소
+# =========================
+with colB:
+    st.markdown("### 🏋️ 헬스장 회원 변화")
+    fig2, ax2 = plt.subplots()
+    ax2.plot(years, gym_membership, marker="o")
+    ax2.set_ylabel("회원 수 지수")
+    ax2.set_title("🏃 운동 산업 영향")
+    st.pyplot(fig2)
+
+# =========================
+# 심혈관 질환 개선
+# =========================
+with colC:
+    st.markdown("### ❤️ 심혈관 질환 개선")
+    fig3, ax3 = plt.subplots()
+    ax3.plot(years, cardio_disease, marker="o")
+    ax3.set_ylabel("질환 발생 지수")
+    ax3.set_title("🫀 건강 지표 변화")
+    st.pyplot(fig3)
+
+# =========================
+# 핵심 요약
+# =========================
+st.subheader("🧠 핵심 해석")
+
+st.info(
+    "🦋 비만치료제는 단순한 체중 감량 약물이 아니라, "
+    "의료비 절감 → 산업 구조 변화 → 사회 인식 변화로 이어지는 "
+    "전형적인 나비효과를 만들어낸다."
+)
+
+st.success("✅ 생명과학 · 의학 · 사회 융합 탐구 웹 앱으로 활용 가능!")
+
