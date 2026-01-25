@@ -10,20 +10,18 @@ st.set_page_config(
 st.title("👋 안녕하세요!")
 st.subheader("저를 소개합니다")
 
-st.write("---")
 
-# 사진 업로드
-uploaded_file = st.file_uploader(
-    "프로필 사진을 업로드해주세요",
-    type=["png", "jpg", "jpeg"]
-)
 
-if uploaded_file is not None:
-    st.image(uploaded_file, caption="프로필 사진", width=250)
-else:
-    st.info("사진을 업로드하면 여기에 표시됩니다 😊")
+import streamlit as st
 
-st.write("---")
+st.title("폼폼푸린 등장 🍮")
+
+image_url = "https://upload.wikimedia.org/wikipedia/en/6/6e/Pompompurin.png"
+
+st.image(image_url, caption="폼폼푸린", use_container_width=True)
+
+
+
 
 # 자기소개 텍스트
 st.markdown(
