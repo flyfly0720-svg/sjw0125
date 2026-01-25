@@ -10,19 +10,17 @@ st.set_page_config(
 st.title("👋 안녕하세요!")
 st.subheader("저를 소개합니다")
 
- 
+
+
 import streamlit as st
 
-st.title("강아지 등장 🐶")
+st.title("귀여운 강아지 🐶💛")
 
-dog_image_url = "https://images.unsplash.com/photo-1558788353-f76d92427f16"
+cute_dog_url = "https://images.unsplash.com/photo-1517849845537-4d257902454a"
 
-st.markdown(
-    "<div style='display: flex; justify-content: center;'>",
-    unsafe_allow_html=True
-)
-st.image(dog_image_url, width=350)
-st.markdown("</div>", unsafe_allow_html=True)
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    st.image(cute_dog_url, caption="너무 귀여운 강아지", width=350)
 
 
 
