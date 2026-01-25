@@ -11,16 +11,16 @@ st.title("👋 안녕하세요!")
 st.subheader("저를 소개합니다")
 
 
-
 import streamlit as st
 
-st.title("귀여운 강아지 🐶💛")
+st.subheader("작고 귀여운 강아지 🐾")
 
-cute_dog_url = "https://images.unsplash.com/photo-1517849845537-4d257902454a"
+small_cute_dog_url = "https://images.unsplash.com/photo-1518717758536-85ae29035b6d"
 
-col1, col2, col3 = st.columns([1, 2, 1])
+col1, col2, col3 = st.columns([2, 1, 2])
 with col2:
-    st.image(cute_dog_url, caption="너무 귀여운 강아지", width=350)
+    st.image(small_cute_dog_url, width=180)
+
 
 
 
