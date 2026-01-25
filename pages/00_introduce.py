@@ -11,14 +11,14 @@ st.title("👋 안녕하세요!")
 st.subheader("저를 소개합니다")
 
 
+st.markdown(
+    "<div style='text-align: center;'>",
+    unsafe_allow_html=True
+)
+st.image(image_url, width=300)
+st.markdown("</div>", unsafe_allow_html=True)
 
-import streamlit as st
 
-st.title("폼폼푸린 등장 🍮")
-
-image_url = "https://upload.wikimedia.org/wikipedia/en/6/6e/Pompompurin.png"
-
-st.image(image_url, caption="폼폼푸린", use_container_width=True)
 
 
 
