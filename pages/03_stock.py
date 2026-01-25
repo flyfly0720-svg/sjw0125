@@ -3,39 +3,35 @@ import yfinance as yf
 import pandas as pd
 import datetime
 
-st.set_page_config(page_title="주가 추이: NVO & LLY", layout="wide")
-
+# 페이지 설정
+st.set_page_config(page_title="NVO 최근 1주일 주가 추이", layout="wide")
 st.title("노보 노디스크 (NVO) 최근 1주일 주가 추이")
 
-# 날짜 범위
-end = datetime.date.today()
-start = end - datetime.timedelta(days=7)
+# 날짜 범위 설정: 오늘부터 7일 전
+end_date = datetime.date.today()
+start_date = end_date - datetime.timedelta(days=7)
 
-# Yahoo Finance 티커
-tickers = {
-    "노보 노디스크 (NVO)": "NVO",
-    "Eli Lilly (LLY)": "LLY"
-}
+# 티커 지정
+ticker_symbol = "NVO"
 
-# Fetch price data
-price_data = {}
-for label, ticker in tickers.items():
-    try:
-        df = yf.download(ticker, start=start, end=end)
-        df = df["Adj Close"].rename(label)
-        price_data[label] = df
-    except Exception as e:
-        st.error(f"데이터 불러오기 오류: {ticker} - {e}")
+# 데이터 불러오기
+try:
+    ticker_data = yf.Ticker(ticker_symbol)
+    df = ticker_data.history(start=start_date, end=end_date)
 
-if price_data:
-    df_prices = pd.concat(price_data.values(), axis=1)
-    
-    st.subheader("종가 (Adjusted Close)")
-    st.line_chart(df_prices)
+    if df.empty:
+        st.warning("해당 기간에 주가 데이터가 없습니다.")
+    else:
+        # 종가 데이터를 별도 시리즈로 추출
+        df_close = df["Close"]
 
-    st.write("원본 데이터 (최근 1주일)")
-    st.dataframe(df_prices)
+        # 차트 표시
+        st.subheader(f"{ticker_symbol} 종가 차트")
+        st.line_chart(df_close)
 
-else:
-    st.write("주가 데이터를 불러오지 못했습니다. 다시 시도해주세요.")
+        # 데이터 표 표시
+        st.subheader("원본 주가 데이터")
+        st.dataframe(df)
 
+except Exception as e:
+    st.error(f"주가 데이터를 불러오는 중 오류가 발생했습니다: {e}")
