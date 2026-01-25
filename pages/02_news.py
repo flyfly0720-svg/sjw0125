@@ -1,41 +1,27 @@
-import streamlit as st
-
-st.title("🧬 왜 인간은 살이 찌는가?")
-st.subheader("― 진화론적 관점에서의 설명")
+st.subheader("📚 GLP-1 작용 메커니즘 연구 · 논문 · 기사 탐색")
 
 st.markdown("""
-인간이 쉽게 살이 찌는 이유는 **의지력의 문제라기보다 진화의 결과**에 가깝다.
+### 🔬 핵심 연구/논문 링크
 
-### 🏹 1. 에너지 저장은 생존 전략이었다
-인류는 대부분의 진화 역사 동안 **식량이 항상 부족한 환경**에서 살아왔다.  
-이 때문에 몸에 **지방을 저장하는 능력**은 생존에 매우 유리했다.
+1. **GLP-1 기반 약물의 비만 치료 메커니즘**  
+   GLP-1 수용체 작용제가 비만 치료에 어떻게 작용하는지 분자 수준에서 설명합니다.  
+   🔗 [Mechanisms involved in obesity treatment (MDPI)](https://www.mdpi.com/1422-0067/26/4/1651)  
+   *GLP-1 수용체 활성화가 지방 분해, 지방세포 기능 개선, 에너지 신호 조절 등 여러 기전을 통해 비만 치료에 기여함을 보고합니다.* :contentReference[oaicite:0]{index=0}
 
-- 음식이 있을 때 최대한 섭취
-- 남은 에너지는 지방으로 저장
-- 기근이 오면 저장된 지방 사용
+2. **GLP-1 작용·식욕 감소와 대사 개선**  
+   GLP-1 호르몬의 대표적 생리학·약리학 개요 논문입니다.  
+   🔗 [Glucagon-like peptide 1 in the pathophysiology and pharmacotherapy of clinical obesity (PubMed)](https://pubmed.ncbi.nlm.nih.gov/40466247/)  
+   *GLP-1 신호가 식욕·지방대사·인슐린 저항성에 영향을 주는 다양한 경로를 정리한 리뷰입니다.* :contentReference[oaicite:1]{index=1}
 
-👉 **살이 잘 찌는 유전자는 살아남았고, 그렇지 못한 유전자는 도태되었다.**
+### 📰 관련 기사
 
----
+3. **GLP-1 비만약의 실제 효과와 장기 유지 가능성**  
+   미국 데이터 분석 기사 — 치료 중단 후에도 일부는 체중 유지 또는 감소를 계속함.  
+   🔗 [GLP-1 약 중단 후 유지에 관한 Reuters 기사](https://www.reuters.com/business/healthcare-pharmaceuticals/many-patients-may-keep-off-lost-pounds-after-stopping-glp-1-us-data-suggests-2026-01-22/)  
+   *실제로 일부 환자들이 약물 중단 후에도 체중 감소를 유지하는 경향이 관찰되었습니다.* :contentReference[oaicite:2]{index=2}
 
-### 🧠 2. 뇌는 여전히 ‘기근 시대’에 살고 있다
-현대 사회는 음식이 넘쳐나지만,  
-우리의 뇌는 여전히 **“언제 다시 굶을지 모른다”**는 전제 아래 작동한다.
-
-- 고칼로리 음식 = 희귀하고 귀한 자원
-- 단맛·지방 → 강한 보상 시스템 활성화
-- 과잉 섭취를 막는 진화적 압력은 거의 없었음
-
----
-
-### 🧁 3. 문제는 환경이 너무 빨리 변했다는 것
-진화는 수만 년이 걸리지만,
-패스트푸드·설탕·가공식품은 **불과 수십 년 만에 등장**했다.
-
-| 과거 환경 | 현대 환경 |
-|---------|---------|
-| 음식 부족 | 음식 과잉 |
-| 많이 움직임 | 좌식 생활 |
-| 고칼로리 음식 희귀 | 고칼로리 음식 상시 존재 |
-
-👉 결과적으로 **진화적으로**
+4. **WHO의 GLP-1 비만 치료 지침 및 접근성 논의**  
+   글로벌 보건 권고와 현실적 문제를 다룬 기사.  
+   🔗 WHO guideline 관련 기사(출처 포함)  
+   *GLP-1 치료가 비만 관리에 권고되지만, 비용 및 접근성 이슈 여전히 존재합니다.* :contentReference[oaicite:3]{index=3}
+""")
