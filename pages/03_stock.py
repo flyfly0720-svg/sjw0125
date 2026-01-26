@@ -87,4 +87,3 @@ latest_growth = revenue_df["Revenue_Growth_%"].iloc[-1]
 st.metric("최근 시가총액", f"${latest_mc/1e12:.2f} T")
 st.metric("최근 연매출", f"${latest_rev/1e9:.1f} B")
 st.metric("최근 매출 성장률", f"{latest_growth:.1f} %")
-
