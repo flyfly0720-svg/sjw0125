@@ -6,7 +6,7 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("🧬 진화론적 관점에서 본 인간의 체중 증가")
+st.title("🧬 인간의 체중 증가")
 st.subheader("왜 우리는 쉽게 살이 찌는가?")
 
 st.markdown("""
