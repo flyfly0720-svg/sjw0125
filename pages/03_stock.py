@@ -1,3 +1,11 @@
+import pandas as pd
+
+df = pd.read_csv("novo_nordisk_financials.csv")
+
+
+
+
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
