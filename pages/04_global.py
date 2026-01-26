@@ -20,19 +20,8 @@ st.markdown("""
 (출처: WHO GHO OData API) :contentReference[oaicite:2]{index=2}
 """)
 
-# -----------------------------------
-# 1) 데이터 로딩
-# -----------------------------------
-@st.cache_data(ttl=86400)
-def load_who_data(url):
-    try:
-        df = pd.read_csv(url)
-        return df
-    except Exception as e:
-        st.error("❌ WHO 데이터를 불러오는 중 오류가 발생했습니다.")
-        st.stop()
 
-df = load_who_data(API_BASE)
+
 
 # -----------------------------------
 # 2) 국가 리스트 선택
