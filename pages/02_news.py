@@ -1,16 +1,61 @@
-st.subheader("🌍 WHO GLP-1 비만 치료 권고 보건 기사")
+import streamlit as st
+import pandas as pd
+import plotly.express as px
 
-# Reuters 기사 링크
-st.markdown("""
-### 📰 공식 WHO 권고 및 접근성 이슈 (Reuters)
-🔗 **[WHO backs use of GLP-1 therapies for obesity, warns access will remain limited — Reuters]**
-(https://www.reuters.com/business/healthcare-pharmaceuticals/who-backs-use-glp-1-therapies-obesity-warns-access-will-remain-limited-2025-12-01/)
+# -----------------------------------
+# 기본 설정
+# -----------------------------------
+st.set_page_config(
+    page_title="비만치료제 150조 시장 근거",
+    page_icon="💊",
+    layout="wide"
+)
 
-📌 요약  
-* WHO가 GLP-1 계열 치료제를 비만 치료 옵션으로 **조건부 권고**했습니다.  
-* 이 권고는 건강한 식생활·신체 활동과 함께 장기적 치료로 활용해야 한다고 제시돼요. :contentReference[oaicite:0]{index=0}
+st.title("💊 비만치료제 시장 150조 원 전망의 정량적 근거")
+st.caption("CSV 기반 시장·기업·공공보건 근거 시각화")
 
-📌 주요 포인트  
-1. WHO는 비만을 **만성질환**으로 보고 GLP-1 치료제를 장기 치료 옵션에 포함시켰습니다. :contentReference[oaicite:1]{index=1}  
-2. 치료제의 **접근성 한계**(생산 확대에도 2030년까지 이용 가능 인구가 10% 미만일 수도 있다는 전망)를 강조했습니다. :contentReference[oaicite:2]{index=2}
-""")
+# -----------------------------------
+# CSV URL
+# -----------------------------------
+CSV_URL = (
+    "https://gist.githubusercontent.com/anonymous/"
+    "8d45012a53dc9cda500edec49b4c0480/raw/market_evidence.csv"
+)
+
+@st.cache_data(ttl=86400)
+def load_data(url):
+    return pd.read_csv(url)
+
+# -----------------------------------
+# 데이터 로딩
+# -----------------------------------
+try:
+    df = load_data(CSV_URL)
+except Exception:
+    st.error("CSV 데이터를 불러오지 못했습니다.")
+    st.stop()
+
+# -----------------------------------
+# 데이터 표시
+# -----------------------------------
+st.subheader("📄 시장 성장 근거 데이터")
+st.dataframe(df, use_container_width=True)
+
+# -----------------------------------
+# 시각화
+# -----------------------------------
+market_df = df[df["Market_Size_USD_B"].notna()]
+
+fig = px.bar(
+    market_df,
+    x="Source",
+    y="Market_Size_USD_B",
+    color="Category",
+    labels={"Market_Size_USD_B": "시장 규모 (USD Billion)"}
+)
+
+st.plotly_chart(fig, use_container_width=True)
+
+
+
+
