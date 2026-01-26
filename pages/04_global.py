@@ -1,24 +1,3 @@
-import streamlit as st
-import pandas as pd
-import plotly.express as px
-
-st.set_page_config(
-    page_title="WHO 비만율 데이터 시각화",
-    page_icon="🌍",
-    layout="wide"
-)
-
-st.title("🌍 WHO 성인 비만율 데이터 (BMI ≥ 30)")
-st.caption("World Health Organization Global Health Observatory API 기반 시각화")
-
-# WHO OData API 엔드포인트
-API_BASE = "https://ghoapi.azureedge.net/api/NCD_BMI_30?format=csv"
-
-st.markdown("""
-이 앱은 WHO Global Health Observatory (GHO)에서 제공하는  
-**성인 비만율 (BMI ≥ 30, age-standardized)** 데이터를 자동 수집해 국가별 비교를 제공합니다.  
-(출처: WHO GHO OData API) :contentReference[oaicite:2]{index=2}
-""")
 
 
 
