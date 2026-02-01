@@ -1,52 +1,55 @@
-
-
-
-
-
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+import yfinance as yf
+import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Novo Nordisk 성장 분석", layout="wide")
-st.title("💊 노보 노디스크 시가총액 & 매출 성장")
+st.set_page_config(layout="wide")
+st.title("📊 노보노디스크 vs 일라이릴리 주가 & 시장성 분석")
 
-# =========================
-# CSV 로딩 (캐시 적용)
-# =========================
-@st.cache_data
-def load_data():
-    return pd.read_csv("novo_nordisk_financials.csv")
+# ===============================
+# 1) 주가 비교 (Yahoo 데이터)
+# ===============================
+symbols = {"Novo Nordisk": "NVO", "Eli Lilly": "LLY"}
+start_date = "2024-01-01"
 
-df = load_data()
+df_prices = pd.DataFrame()
+for name, ticker in symbols.items():
+    df_prices[name] = yf.download(ticker, start=start_date)["Adj Close"]
 
-# =========================
-# 데이터 확인
-# =========================
-st.subheader("📄 원본 데이터")
-st.dataframe(df)
+st.subheader("📈 주가 추이 (Adjusted Close)")
+st.line_chart(df_prices)
 
-# =========================
-# 시가총액 그래프
-# =========================
-fig1 = px.line(
-    df,
-    x="Year",
-    y="MarketCap_USD_B",
-    markers=True,
-    title="노보 노디스크 시가총액 변화 (USD Billion)",
-    labels={"MarketCap_USD_B": "시가총액 (십억 달러)"}
-)
-st.plotly_chart(fig1, use_container_width=True)
+# ===============================
+# 2) 요약 매출/성장 정보 표시
+# ===============================
+st.subheader("💰 매출 · 성장성 비교 (정성적 요약)")
 
-# =========================
-# 매출 그래프
-# =========================
-fig2 = px.line(
-    df,
-    x="Year",
-    y="Revenue_USD_B",
-    markers=True,
-    title="노보 노디스크 매출 성장",
-    labels={"Revenue_USD_B": "매출 (십억 달러)"}
-)
-st.plotly_chart(fig2, use_container_width=True)
+st.markdown("""
+**일라이릴리 (LLY)**  
+- 2025 매출 가이던스: 약 **$58–$61B**  
+- GLP-1 제품(Mounjaro, Zepbound) 급성장  
+- 적극적인 생산 투자 및 확장 발표
+
+**노보노디스크 (NVO)**  
+- 전통적인 GLP-1 리더  
+- Ozempic / Wegovy 기반 매출 여전히 강세  
+- 경쟁 심화 & 변동성 확대로 시장 리스크 존재
+""")
+
+# ===============================
+# 3) 시장성 인사이트 (텍스트)
+# ===============================
+st.subheader("🔍 GLP-1 비만/당뇨 치료제 시장성 비교")
+
+st.markdown("""
+✔ **Lilly**는 미국 중심 매출 증가 및 신규 파이프라인 성과 예상  
+✔ **Novo**는 기존 치료제 점유율 유지 중이나 경쟁 압박이 존재  
+✔ 두 기업 모두 비만 치료제 시장의 성장 혜택을 공유
+""")
+
+st.markdown("📌 *이 분석은 최신 외부 시장 리포트/뉴스 기반입니다*")
+
+
+
+
+
